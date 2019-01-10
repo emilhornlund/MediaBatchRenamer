@@ -10,11 +10,14 @@ import Foundation
 
 enum MediaType {
     case show(String, Int, Int, String)
+    case movie(String)
     
     func filename(extension ext: String) -> String {
         switch self {
         case .show(let show, let season, let episode, let title):
             return "\(show) - S\(String(format: "%02d", season))E\(String(format: "%02d", episode)) - \(title).\(ext)"
+        case .movie(let title):
+            return "\(title).\(ext)"
         }
     }
 }
